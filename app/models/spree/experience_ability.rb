@@ -17,7 +17,7 @@ module Spree
           image.viewable.product.experience_ids.include?(user.experience_id)
         end
         can :create, Spree::Image
-        if SpreeExperiencetMarketplace::Engine.spree_group_price_available?
+        if SpreeExperienceMarketplace::Engine.spree_group_price_available?
           # can [:admin, :manage], Spree::GroupPrice, variant: { experience_ids: user.experience_id }
           can [:admin, :manage, :create,], Spree::GroupPrice do |price|
             price.variant.experience_ids.include?(user.experience_id)
@@ -57,7 +57,7 @@ module Spree
         end
       end
 
-      if SpreeExperiencetMarketplace::Config[:allow_signup]
+      if SpreeExperienceMarketplace::Config[:allow_signup]
         can :create, Spree::experience
       end
 
